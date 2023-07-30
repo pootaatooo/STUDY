@@ -1,0 +1,48 @@
+####  백준 블로그 109 이진탐색 참고
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n, m;
+    int a, b;
+    
+    cin >> n;
+    vector<int> v1(n);
+    
+    for(int i = 0; i < n; i++) {
+        cin >> a;
+        v1[i] = a;
+    }
+    
+    cin >> m;
+    vector <int> v2(m);
+    int count = 0;
+    
+    for(int i = 0; i < m; i++) {
+        cin >> b;
+        v2[i] = b;
+    }
+    
+    sort(v1.begin(), v1.end());
+    int low = 0 , high = n - 1;
+    
+    count = binary_search(vector<int> v1 , int low, int high, vector<int> v2);
+    
+    
+    /*for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            if(v2[i] == v1[j]) 
+                count[i]++;
+        }
+    }*/
+    
+    for(int i = 0; i < m; i++) {    
+        cout << v1[i] << '\n';
+    }
+
+    
+}
