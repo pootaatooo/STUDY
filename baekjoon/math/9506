@@ -3,6 +3,7 @@ n = 6일때 for문으로 n을 1부터 6까지 나누었을때 나머지가 없�
 
 
 #####
+
 #include <iostream>
 
 using namespace std;
@@ -16,13 +17,13 @@ int main() {
         
         for(int i = 0; i < n; i++) {
             
-            if(n % i == 0 && n != i)
+            if(n % i == 0)
                 yak += i;
             else
                 continue;
             
             if(yak == n)
-                cout << n << ' ' << '=' << ' ' << yak << ' ' << '+' << ' ' << yak << ' ' << '+' << ' ' << yak;
+                cout << n << ' ' << '=' << ' ' << i << ' ' << '+' << ' ' << i << ' ' << '+' << ' ' << i;
             else
                 cout << n << " is NOT perfact.";
         }
