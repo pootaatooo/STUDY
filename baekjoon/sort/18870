@@ -62,3 +62,37 @@ int main() {
 절대좌표에서는 999 다음이 1000이므로 0 과 1이 출력되어야함
 같은 값 예외처리가 필요함.
 지금 드는 생각은 i + 2 이런식으로 배열인덱스를 읽어주는 범위를 뛰어넘어버리면 되지 않을까 싶긴 한데 구현이 안됨 시간이 필요할듯
+
+#include <iostream> 참고용티비
+#include <algorithm>
+#include <vector>
+#include <map>
+using namespace std;
+
+int main() {
+    int a, b;
+    vector<int> v;
+    map<int, int>m;
+    
+    cin >> a;
+    
+    for(int i = 0; i < a; i++) {
+        cin >> b;
+        v.push_back(b);
+        m.insert({b,0});
+    } 
+    
+    int i = 0;
+    
+    for(pair<int, int>p : m) {
+        if(m.find(p.first) != m.end()) {
+            m[p.first] = i++;
+        }
+    }
+    
+    for(auto w : v)
+        cout << m[w] << ' ';
+    
+}
+
+
