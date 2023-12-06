@@ -11,28 +11,28 @@ int main() {
     while(cin >> c) {
         if(c == 'R') {
             x++;
-            if(x == 0 || x == n+1) {
+            if(x == 0 || x > n) {
                 x--;
                 continue;
             }
         }
         else if(c == 'L') {
             x--;
-            if(x == 0 || x == n+1) {
+            if(x == 0 || x > n) {
                 x++;
                 continue;
             }
         }
         else if(c == 'U') {
             y--;
-            if(y == 0 || y == n+1) {
+            if(y == 0 || y > n) {
                 y++;
                 continue;
             }
         }
         else if(c == 'D') {
             y++;
-            if(y == 0 || y == n+1) {
+            if(y == 0 || y > n) {
                 y--;
                 continue;
             }
