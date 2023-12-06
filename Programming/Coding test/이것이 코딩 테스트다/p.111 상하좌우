@@ -1,0 +1,46 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    char c;
+    int x = 1, y = 1;
+    
+    while(cin >> c) {
+        if(c == 'R') {
+            x++;
+            if(x == 0 || x == n+1) {
+                x--;
+                continue;
+            }
+        }
+        else if(c == 'L') {
+            x--;
+            if(x == 0 || x == n+1) {
+                x++;
+                continue;
+            }
+        }
+        else if(c == 'U') {
+            y--;
+            if(y == 0 || y == n+1) {
+                y++;
+                continue;
+            }
+        }
+        else if(c == 'D') {
+            y++;
+            if(y == 0 || y == n+1) {
+                y--;
+                continue;
+            }
+        }
+        
+    }
+    
+    cout << y << ' ' << x;
+    
+}
+
