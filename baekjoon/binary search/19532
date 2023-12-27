@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int a, b, c, d, e, f;
+    cin >> a >> b >> c >> d >> e >> f;
+    
+    for(int i=-999;i<1000;i++) {
+        for(int j=-999;j<1000;j++) {
+            if((a*i)+(b*j) - c == 0 && (d*i)+(e*j) - f == 0) {  // if((a*i)+(b*j) - c == (d*i)+(e*j) - f) 랑 헷갈림
+                cout << i << ' ' << j;
+            }
+        }
+    }
+    
+    
+}
+
+구간이 -999 ~ 999 라는 비교적 낮은 값을 이용해 이중for문으로 두개 방정식의 i(i=x)값이 0이 될 때와
+j(j=y)값 모두 0이 될 때 출력을 하는 방식을 사용했다.
+
+if문을 잘못 썼었는데 두개의 방정식 모두를 만족하는 x,y값을 구하는 과정에서 맞지 않는 방식이었다.
