@@ -1,0 +1,34 @@
+반복문, 재귀함수 두가지 형식으로 풀 것
+
+1. 반복문
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int t, n;
+    cin >> t;
+    vector<int>v;
+    
+    v.push_back(0);
+    v.push_back(1);
+    v.push_back(3);
+    v.push_back(4);
+    
+    
+    for(int i=0;i<t;i++) {
+        cin >> n;
+        
+        while(1) {
+            
+        }
+        
+    }
+    
+
+    
+}
+
+2. 재귀함수
+
