@@ -1,0 +1,3 @@
+priority_queue<int, vector<int>, decltype(&compare_abs)> q;
+
+compare_abs함수를 사용하고 싶을 때 앞에 decltype(&~~~)을 추가시켜줘야함
