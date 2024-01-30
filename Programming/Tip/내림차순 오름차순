@@ -1,12 +1,18 @@
 sort는 기본적으로 오름차순 정렬.
 
-기본 STL인 greater<>가
-
 1. vector
 sort(v.begin(),v.end(),greater<>());
 
 2. array
 sort(x,x+n,greater<>());
 
+
 비교 연산자(priority_queue를 포함)는 기본적으로 내림차순 정렬.
-greater<> 사용시 오름차순.
+
+선언
+priority_queue<자료형, container, 비교함수> 변수명
+
+비교함수가 true값을 반환하면 (a > b에서 a가 크면) 비교 대상의 자리를 바꾼다. 그렇게 정렬할게 없을 때까지
+모든 변환이 끝나면 정렬이 끝난거임
+false값을 반환하면 기본적인 내림차순으로 정렬된다.
+
