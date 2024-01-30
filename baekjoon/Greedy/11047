@@ -18,33 +18,26 @@ int main() {
     }
     
     sort(v.begin(),v.end(),greater<>());
-    int cnt = 0;
-    //  for(int i=0;i<n;i++) {
-    //     cout << v[i] << endl;
-    // }
     
-    while(1) {
-        int i = 0;
-        i++;
-        if(k - v[i] > 0) {
+    int cnt = 0;
+    int i = 0;
+    
+    while(k != 0) {
+        if(k - v[i] >= 0) {
             k -= v[i];
             cnt++;
         }
-        else if(k == 0) {
-            break;
-        }
+        else
+            i++;
     }
-    
-    
+
     cout << cnt;
     
 }
 
 
 
-
 2. 배열사용
-
 #include <iostream>
 #include <algorithm>
 
@@ -61,14 +54,13 @@ int main() {
     }
     
     sort(v,v+n,greater<int>());
+    
     int cnt = 0;
+    int i = 0;
     
     while(k != 0) {
-        int i = 0;
-        if(k - v[i] > 0) {
-            if(k-v[i] < i) {
-                i++;
-            }
+        
+        if(k - v[i] >= 0) {
             k -= v[i];
             cnt++;
         }
@@ -80,3 +72,7 @@ int main() {
     cout << cnt;
     
 }
+
+우선 i값 초기화에 신경써준다. while문 안에 있으면 i는 계속 0이 된다는 점
+또 필요없는 if문이 있는지 없는지 자세히 검산해봐야됨
+아이디어 구현은 굉장히 좋았다!!
