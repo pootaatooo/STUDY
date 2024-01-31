@@ -5,14 +5,44 @@
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     int n, net;
     cin >> n >> net;
-    int com[n];
+    // int com[n];
     queue<pair<int,int>> q;
     
-    for(int i=0;i<n;i++) {
-        com[i] = i+1;
+    // for(int i=0;i<n;i++) {
+    //     com[i] = i+1;
+    // }
+    
+    int a, b;
+    
+    for(int i=0;i<net;i++) {
+        cin >> a >> b;
+        q.push(make_pair(a,b));
     }
     
+    int x, cnt = 0;
+    
+    while(!q.empty()) {
+        if(q.front().first == 1) {
+            x = q.front().second;
+            cnt++;
+            q.pop();
+        }
+        else if(q.front().second == 1) {
+            x = q.front().first;
+            cnt++;
+            q.pop();
+        }
+        
+    }
+    
+    
+    
+    // while(!q.empty()) {
+    //     cout << q.front().first << ' ' << q.front().second << endl;
+    //     q.pop();
+    // }
 
 }
