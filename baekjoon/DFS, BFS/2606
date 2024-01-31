@@ -24,3 +24,41 @@ int main() {
     
     
 }
+
+#include <iostream>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+void printGraph(const vector<vector<int>>& graph) {
+    for(int i=1;i<graph.size();i++) {
+        cout << i << ' ';
+        for(int j=0;j<graph[i].size();j++) {
+            cout << graph[i][j] << ' ';
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(0); cin.tie(0);
+    int n,m;
+    cin >> n >> m;  // 컴퓨터의 수 n, 연결 정보의 수 m
+    vector<vector<int>> graph(n+1);
+    vector<bool> visited(n+1,false);
+    int cnt = 0;
+    
+    for(int i=0;i<m;i++) {
+        int a, b;
+        cin >> a >> b;
+        graph[a].push_back(b);
+        graph[b].push_back(a);
+    }
+    
+    printGraph(graph);
+    
+    
+    
+    
+}
