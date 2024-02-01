@@ -4,9 +4,9 @@
 using namespace std;
 
 long long cnt = 0;
-vector<pair<int,int>>v;
+vector<pair<char,char>>v;
 
-void hanoi(int n, int a, int b, int c) {
+void hanoi(int n, char a, char b, char c) {
     if(n == 1) {
         //cout << a << ' ' << c << '\n';
         v.push_back(make_pair(a,c));
@@ -27,7 +27,7 @@ int main() {
     long long n;
     cin >> n;
     
-    hanoi(n, 1, 2, 3);
+    hanoi(n, '1', '2', '3');
     
     cout << cnt << '\n';
     
@@ -40,3 +40,4 @@ int main() {
     
     return 0;
 }
+char -> int 변경해도 바뀌는거 없음
