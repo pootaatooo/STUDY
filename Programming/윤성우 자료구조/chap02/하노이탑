@@ -16,3 +16,26 @@ int main() {
     aa(3, 'A', 'B', 'C');
     return 0;
 }
+
+이해하는데 꽤 오래걸림. aa함수의 재귀는 결국 "복사본"을 만들어주는 것!
+
+우선 aa함수에 num=3 , a = A, b = B, c = C값을 넣어주었고
+first.aa(n=3)함수에서 else문 안에 second.aa(n=2)함수로 들어간다 second.aa함수에서 한번더 3.aa함수(n=1)로 간다.
+3.aa 함수에서 n이 1이 되므로서 print(1).
+다시 second.aa함수로 돌아와 밑에 print(2). 그리고 다음 4.aa(n=1)함수로 들어간다.
+4.aa 함수에서 n이 1이 되므로 print(3).
+다시 first.aa함수로 돌아와 밑에 print(4). 다음 5.aa(n=2)함수로 들어간다.
+5.aa 함수에서 else문에 들어간 후 6.aa(n=1)함수 실행.
+6.aa 함수에서 n이 1이 되므로 print(5).
+다시 5.aa함수로 돌아가서 print(6). 다음 7.aa(n=1)함수로 들어간다.
+7.aa 함수에서 n이 1이 되므로 print(7).
+
+n=3인경우
+aa(3)->aa(2)->aa(1)->print
+            ->print
+            ->aa(1)->print
+->print
+->aa(2)->aa(1)->print
+       ->print
+       ->aa(1)->print
+총 print횟수 7이 나옴
