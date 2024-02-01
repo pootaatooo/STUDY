@@ -4,9 +4,9 @@
 using namespace std;
 
 long long cnt = 0;
-vector<pair<char,char>>v;
+vector<pair<int,int>>v;
 
-void hanoi(int n, char a, char b, char c) {
+void hanoi(int n, int a, int b, int c) {
     if(n == 1) {
         //cout << a << ' ' << c << '\n';
         v.push_back(make_pair(a,c));
@@ -27,7 +27,7 @@ int main() {
     long long n;
     cin >> n;
     
-    hanoi(n, '1', '2', '3');
+    hanoi(n, 1, 2, 3);
     
     cout << cnt << '\n';
     
