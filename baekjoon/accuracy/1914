@@ -12,7 +12,7 @@ void hanoi(int n, char a, char b, char c) {
         v.push_back(make_pair(a,c));
         cnt++;
     }
-    else {
+    else { // else문 굳이 없어도 됨
         hanoi(n-1, a, c, b);
         //cout << a << ' ' << c << '\n';
         v.push_back(make_pair(a,c));
@@ -41,3 +41,19 @@ int main() {
     return 0;
 }
 char -> int 변경해도 바뀌는거 없음
+
+#phytyon 코드 개사기
+def hanoi(n, a, b, c):
+    if n == 1:
+        print(a, c)
+        return
+    hanoi(n-1, a, c, b)
+    print(a, c)
+    hanoi(n-1, b, a, c)
+    
+n = int(input())
+
+print(2**n - 1)
+
+if n <= 20:
+    hanoi(n, 1, 2, 3)
