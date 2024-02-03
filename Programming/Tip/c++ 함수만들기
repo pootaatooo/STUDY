@@ -1,0 +1,4 @@
+c++에서 함수를 만들어줄 때
+
+void azzago() {} , int azzago() {} 와 같이 앞에 void, int, string, long long등이 붙는 이유는
+만약 이 함수를 사용함으로써 return값이 없으면 void, return값이 int형이면 int, return값이 string이면 string을 붙여준다.
