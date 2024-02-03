@@ -6,19 +6,29 @@ using namespace std;
 int main() {
     int t;
     cin >> t;
-    int n;
     
     for(int i=0;i<t;i++) {
+        int n;
         cin >> n; 
-        map<string,int> m; // 반복문을 돌때마다 초기화 시켜줌
+        map<string,int> m; // 각 테스트케이스마다 맵을 새로 생성
         string x, y;
         
         for(int j=0;j<n;j++) {
             cin >> x >> y;
-            m.insert({y,j++});
+            m[y]++;  // m이라는 map에 y라는 string이 몇번 나오는지 카운트
         }
         
+        int re = 1;
+        
+        for(auto iter=m.begin();iter!=m.end();iter++) { // m에 겹치지 않는 y값이 나온만큼 반복
+            re *= (iter->second+1);                    // iter->의 first값은 key(y값)을 가리키고
+            //cout << iter->second << endl;            // second값은 key이 나온 횟수를 가리킨다.
+        }
+        
+        cout << re-1 << endl; 
     }
-    
-    
+
+
 }
+
+# c++11이후에 나온 것들 공부..
