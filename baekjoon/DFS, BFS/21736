@@ -1,1 +1,35 @@
+#include <iostream>
+#include <map>
 
+using namespace std; // 문제를 굳이 I를 움직이는 식으로 풀 필요없고 P의 앞뒤왼오가 X로 막혀있거나
+                    // 밖으로 나가는지만 확인하면 될듯? #백준2667참고
+int dx[4] = {-1, 1, 0, 0};
+int dy[4] = {0, 0, -1, 1};
+
+int main() {
+    int n, m; 
+    cin >> n >> m;
+    char cam[n][m];
+    
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            cin >> cam[i][j];
+        }
+    }
+    int cnt = 0;
+    
+    for(int i=0;i<4;i++) { // 상하좌우 움직임 표현
+        int nx;
+        int ny;
+    }
+    
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            if(nx<0 || nx>= n || ny<0 || ny>=0) {
+                
+            }
+
+        }
+    }
+    
+}
