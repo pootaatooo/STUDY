@@ -9,7 +9,6 @@ int main() {
     cin >> n >> m;
     int num[n+1]; // n개의 수(1부터 실제적인 값을 넣어줄 거기 때문에 +1)
     // vector<pair<int,int>>v; // 합을 구하는 구간 v.first = i , v.second = j 
-    // vector<int> s; // 출력값
     
     num[0] = 0;  // 그냥 초기화
     
