@@ -12,33 +12,33 @@
 #include <queue>
 #include <algorithm>
 
-using namespace std;
+using namespace std;  // 우선순위 큐 안쓰고 풀어보자
 
 int main() {
     int t;
     cin >> t;
+    queue<int>q;  // 각 문서의 중요도를 순서대로 받는 배열
     
     for(int i=0;i<t;i++) {
         int n, m;       // n=문서의 개수, m=찾고자하는 배열의 포인터값
         cin >> n >> m;
-        vector<int>v;  // 각 문서의 중요도를 순서대로 받는 배열
-         
+        vector<int> v; // 여기도 q와 같은 값을 넣어서 q[m]의 값과 비교
+        
         for(int j=0;j<n;j++) {
             int important;
             cin >> important;
+            q.push(important);
             v.push_back(important);
         }
         
-        int re = v[m]; // 여기들어있는 값이 우선순위를 따졌을 때 언제나오느냐를 구현해야함
+        int re = q[m]; // 여기들어있는 값이 우선순위를 따졌을 때 언제나오느냐를 구현해야함
         
         vector<int>a; // 우선순위대로 구현한 배열
         
         for(int j=0;j<n;j++) {
-            cout << v[j] <<  ' ' << re << endl;
+            cout << q.front() << ' ' << v[j] << endl;
+            q.pop();
         }
-        
-        
-        
         
     }
 
