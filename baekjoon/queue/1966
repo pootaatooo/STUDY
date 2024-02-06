@@ -37,16 +37,22 @@ int main() {
         
         sort(a.begin(),a.end(),greater<>());
         
-        int re = v[m]; // 여기들어있는 값이 우선순위를 따졌을 때 언제나오느냐를 구현해야함
+        // for(int j=0;j<n;j++) {
+        //     cout << q.front() << ' ' << v[j] << ' ' << v[m] << ' ' << a[j] << endl;
+        //     q.pop();
+        // }
+        // cout << "___________" << endl;
+        
+        int re = 0;
         
         for(int j=0;j<n;j++) {
-            cout << q.front() << ' ' << v[j] << endl;
-            q.pop();
+            if(a[j] == v[m]) {
+                re = j+1;
+                break;
+            }
         }
         
-        
-        
-        
+        cout << re << '\n';
         
         
     }
