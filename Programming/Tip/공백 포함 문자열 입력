@@ -1,0 +1,9 @@
+1. getline
+string s;
+getline(cin, s);
+cout << s;
+
+2. cin.getline -> 개행문자말고 다른 문자로도 입력을 종료시킬 수 있다.
+char s[100];
+cin.getline(s,100,'\n); // (배열이름, 배열크기, 구분문자)
+cout << s;
