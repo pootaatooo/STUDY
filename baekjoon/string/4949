@@ -1,0 +1,52 @@
+스택문젠데 문자열로 풀고싶다
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string s;
+    
+    
+    while(getline(cin,s)) {
+        if(s == "." && s.length() == 1) continue;
+        
+        int l = s.length();
+        int x = 0; // x는 왼쪽 괄호
+        int y = 0; // y는 오른쪽 괄호
+        int q = 0; // q는 왼쪽 대괄호
+        int p = 0; // p는 오른쪽 대괄호
+        
+        for(int i=0;i<l;i++) {
+            if(s[i] == ')') {
+                y++;
+            }
+            else if(s[i] == '(') {
+                x++;
+                if(y != 0) {
+                    x--;
+                }
+            }
+            else if(s[i] == ']') {
+                p++;
+            }
+            else if(s[i] == '[') {
+                q++;
+                if(p != 0) {
+                    q--;
+                }
+            }
+            
+        }
+        
+        if(x == y && q == p) {
+            cout << "yes" << '\n';
+        }
+        else
+            cout << "no" << '\n';
+        
+        //cout << x << ' ' << y << ' ' << q << ' ' << p << ' ' << w <<  endl;
+
+    }
+
+}
