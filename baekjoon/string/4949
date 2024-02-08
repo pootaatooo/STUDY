@@ -1,52 +1,67 @@
-스택문젠데 문자열로 풀고싶다
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <vector>
 
 using namespace std;
 
 int main() {
     string s;
     
-    
-    while(getline(cin,s)) {
-        if(s == "." && s.length() == 1) continue;
+    while(getline(cin, s)) {
+        
+        if(s == ".") continue;  // && s.length() == 1
         
         int l = s.length();
-        int x = 0; // x는 왼쪽 괄호
-        int y = 0; // y는 오른쪽 괄호
-        int q = 0; // q는 왼쪽 대괄호
-        int p = 0; // p는 오른쪽 대괄호
+        int x = 0; // x는 소괄호
+        int y = 0; // y는 대괄호
+        int b[l+1] = {0,}; // 
+        
         
         for(int i=0;i<l;i++) {
             if(s[i] == ')') {
-                y++;
+                x--;
+                b[i]--;
             }
             else if(s[i] == '(') {
                 x++;
-                if(y != 0) {
-                    x--;
-                }
+                b[i]++;
             }
             else if(s[i] == ']') {
-                p++;
+                y--;
+                b[i] -= 2;
             }
             else if(s[i] == '[') {
-                q++;
-                if(p != 0) {
-                    q--;
-                }
+                y++;
+                b[i] += 2;
             }
+            
+            if(x != 0 || y != 0) continue;
             
         }
         
-        if(x == y && q == p) {
-            cout << "yes" << '\n';
-        }
-        else
-            cout << "no" << '\n';
+        vector<int> v;
+        int a[l+1] = {0,}; // 여기서 증감
+        int k =0;
         
-        //cout << x << ' ' << y << ' ' << q << ' ' << p << ' ' << w <<  endl;
-
+        for(int i=0;i<l;i++) {
+            if(b[i] == 0) continue;
+            v.push_back(b[i]); // 벡터에 괄호듶의 값만 넣어줌
+        }
+        
+        for(auto it = v.begin(); it != v.end(); it++) { // 벡터 반복문
+            cout << *it << ' ';
+        }
+        cout << endl;
+        
+        
+        if(x == 0 && y == 0) cout << "yes" << '\n';
+        else cout << "no" << '\n';
+        
     }
-
+    
+    
+    
+    
+    
 }
