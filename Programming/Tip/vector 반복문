@@ -1,6 +1,14 @@
-1. for(auto it = v.begin(); it != v.end(); it++) {
-            cout << *it << ' ';
-    }
+1. for루프
+vector<int> v;
+for(int it : v) {
+   cout << it << ' ';
+}
+cout << endl;
 
-2.
+2. 반복자
+vector<int> v;
+for(auto it = v.begin(); it!=v.end();it++) {
+   cout << *it << ' ';
+}
+cout << endl;
   
