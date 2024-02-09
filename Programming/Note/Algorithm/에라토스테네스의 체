@@ -33,16 +33,22 @@ bool isPrimeNumber(int x) {
     }
     return true;
 }
-
-
 int main() {
     int x;
     cin >> x;
-
-    cout << isPrimeNumber(x); // 1이면 소수, 0이면 소수아님
+    cout << isPrimeNumber(x);
 }
 
 3. 에라토스테네스의 체
+입력값이 8인 경우, 2*4 = 4*2 이므로 대칭을 이룬다. 즉 소수의 배수들은 다 소수가 아님
+
+2부터 소수를 구하고자하는 구간의 모든 수를 나열한다. (0과1은 소수가아님)
+2는 1과 자기자신만을 약수로 가지므로 소수. 그 수의 배수들은 모두 0 처리
+3은 1과 자기자신만을 약수로 가지므로 소수. 그 수의 배수들은 모두 0 처리
+4는 이미 0처리 되어있음 패스
+~
+0처리가 안된 부분들이 곧 소수임.
+
 https://github.com/pootaatooo/STUDY/blob/main/baekjoon/math/1929
 
 
