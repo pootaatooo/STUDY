@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cmath>
 #include <algorithm>
-#include <map>
-#incldue <vector>
 
 using namespace std;
 
@@ -23,41 +21,32 @@ int main() {
     
     if(round(sum/n) == -0) cout << 0 << '\n';
     else
-        cout << round(sum / n) << '\n';
+        //cout << round(sum / n) << '\n';
     
     // 중앙값 출력 (어차피 정렬 안 풀어줘도 될듯)
     sort(num,num+n);
-    cout << num[n/2] << '\n';
+    //cout << num[n/2] << '\n';
     
-    //최빈값 출력
-    int a[8001] = {0,};
+    //최빈값 출력 ( -4000~4000을 4000씩 미뤄서 0~8000으로 계산해보자 0~4000 (0~4000), 4001~8000(-1~ -4000)
+    int cnt[8001] = {0,};
     
     for(int i=0;i<n;i++) {
         if(num[i] >= 0) {
-            a[num[i]]++;
+            cnt[num[i]]++;
         }
         else
-            a[(-num[i])+4000]++;
+            cnt[(-num[i])+4000]++;
     }
 
-    
     for(int i=0;i<=8000;i++) {
-        if(num[i] > 0) {
-            a[i] = num[i];
-            cnt++;
-        }
-        else if(num[i] < 0) {
-            a[i] = -num[i] + 4000;
-            cnt++;
-        }
-        
-    }
+        cout << cnt[i] << endl;
+    }    
 
     
     // 범위 출력
     int re = 0;
     re = num[n-1] - num[0];
-    cout << re << '\n';
+    //cout << re << '\n';
     
     
     
