@@ -22,11 +22,11 @@ int main() {
     
     if(round(sum/n) == -0) cout << 0 << '\n';
     else
-        //cout << round(sum / n) << '\n';
+        cout << round(sum / n) << '\n';
     
     // 중앙값 출력 (어차피 정렬 안 풀어줘도 될듯)
     sort(num,num+n);
-    //cout << num[n/2] << '\n';
+    cout << num[n/2] << '\n';
     
     //최빈값 출력(계수정렬)
     int cnt[8001] = {0,};
@@ -38,10 +38,6 @@ int main() {
             cnt[(-num[i])+4000]++;
     }
     
-    // for(int i=0;i<=8000;i++) {
-    //     if(cnt[i] == 0) continue;
-    //     cout << cnt[i] << ' ' << i << endl;
-    // }
     int k = 0; // 카운트한 배열의 사이즈
     vector<pair<int,int>> v;
     
@@ -54,19 +50,32 @@ int main() {
     sort(v.begin(),v.end());
     
     int result = v[k-1].second;
+    cout << result << "***" << endl;
+    int mm = v[0].second;
     int count = 0;
     
     for(int i=0;i<k;i++) {
-        if(v[i].first == v[i+1].first) {
-            count++;
-        }
-        else {
-            if(count > 0) {
-
+        if(v[i].first != 1) {
+            if(v[i].first == v[i+1].first) {
+                count++;
             }
         }
-        
-        
+    }
+    
+    if(count > 0) {
+        for(int i=0;i<k;i++) {
+            if(v[i].first == v[i+1].first) {
+                mm = min(mm, v[i].second);
+            }
+        }
+    
+        for(int i=0;i<k;i++) {
+            //cout << v[i].second << ' ' << mm << endl;
+            if(mm == v[i].second) {
+                result = v[i+1].second;
+            }
+            cout << result << ' ';
+        }
     }
     
     if(result > 4000) {
@@ -79,9 +88,9 @@ int main() {
 
 
     // 범위 출력
-    //int re = 0;
-    //re = num[n-1] - num[0];
-    //cout << re << '\n';
+    int re = 0;
+    re = num[n-1] - num[0];
+    cout << re << '\n';
     
     
     
