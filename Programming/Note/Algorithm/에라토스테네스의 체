@@ -1,13 +1,13 @@
 소수를 구할 때 매우 유용하며, 시간복잡도를 크게 향상시킨다.
 
-일반적인 소수 판별 알고리즘
+1. 일반적인 소수 판별 알고리즘
 
 #include <iostream>
 
 using namespace std;
 
 bool isPrimeNumber(int x) {
-    for(int i=2;i<x;i++) { // 소수가 아닌 0과1을 제외한 수부터 x값까지 모두 계산. 시간복잡도 O(N)
+    for(int i=2;i<=x;i++) { // 소수가 아닌 0과1을 제외한 수부터 x값까지 모두 계산. 시간복잡도 O(N)
         if(x%i == 0) return false;
     }
     return true;
@@ -20,4 +20,28 @@ int main() {
 
     cout << isPrimeNumber(x); // 1이면 소수, 0이면 소수아님
 }
+
+2. 제곱근을 이용한 소수 판별 알고리즘
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+bool isPrimeNumber(int x) {
+    for(int i=2;i<=sqrt(x);i++) { // (int i=2; i*i <= x; i++)
+        if(x%i == 0) return false;
+    }
+    return true;
+}
+
+
+int main() {
+    int x;
+    cin >> x;
+
+    cout << isPrimeNumber(x); // 1이면 소수, 0이면 소수아님
+}
+
+3. 에라토스테네스의 체
+
 
