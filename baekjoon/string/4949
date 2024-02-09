@@ -76,3 +76,55 @@ int main() {
 }
 
 백준 풀면서 가장 열심히 푼듯 3일 내내 풀었다.
+
+#include <iostream> // 간략하게 정리 가능
+
+using namespace std;
+
+int main() {
+    string s;
+    
+    while (getline(cin, s)) {
+        if (s == ".") continue;
+        
+        int l = s.length();
+        int k = 0; // 문자열에서 괄호가 나온 횟수 
+        
+        for (int i = 0; i < l; i++) {
+            if (s[i] == '(' || s[i] == ')' || s[i] == '[' || s[i] == ']') {
+                k++;
+            }
+        }
+        
+        bool re = true; // 음수가 나왔을 때 앞에 수가 절대값이 맞지 않는 양수일 경우 반복문을 나오고 false(no)를 반환  
+        int q = 0; // b배열에 들어가는 수가 양수일 경우 q값에 넣어줌
+        int b[k + 1] = {0,}; // 양수만 들어올수있다. 음수를 만났을 경우 절대값이 같으면 0으로 바꿔주고
+        
+        for (int i = 0; i < l; i++) {
+            if (s[i] == '(' || s[i] == '[') {
+                b[q] = s[i] == '(' ? 1 : 2;
+                q++; 
+            } else if (s[i] == ')' || s[i] == ']') { 
+                if (q == 0 || (s[i] == ')' && b[q - 1] != 1) || (s[i] == ']' && b[q - 1] != 2)) { 
+                    re = false; 
+                    break;
+                }
+                b[q - 1] = 0;
+                q--;
+            }
+        } 
+        
+        int sum = 0;
+        
+        for (int i = 0; i < k; i++) {
+            sum += b[i]; 
+        }
+        
+        if (re == false || sum != 0) cout << "no" << '\n'; 
+        else cout << "yes" << '\n';
+    }
+    
+    return 0;
+}
+
+
