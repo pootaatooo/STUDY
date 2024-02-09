@@ -62,22 +62,16 @@ int main() {
             }
         }
         
-        if(re == false) cout << "yes" << '\n';
-        else cout << "no" << '\n';
+        for(int i=0;i<k;i++) {
+            cout << a[i] << ' ';
+        }
+        cout << endl;
+        
+        // if(re == false) cout << "yes" << '\n';
+        // else cout << "no" << '\n';
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 }
