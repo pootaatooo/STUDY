@@ -6,11 +6,11 @@ int main() {
     string s;
     
     while(getline(cin,s)) {
-        if(s == ".") continue;
+        if(s == ".") continue; // 점 하나만 나온 경우 출력 안해줌
         
         int l = s.length();
         int k = 0;
-        int a[l+1] = {0,};
+        int a[l+1] = {0,}; // a배열에 괄호에 해당하는 수를 넣어준다 ( = 1, ) = -1, [ = 2, ] = -2
         
         for(int i=0;i<l;i++) {
             if(s[i] == '(') {
@@ -32,12 +32,12 @@ int main() {
  
         }
         
-        bool re = false;
-        int q = 0;
-        a[-1] = 0;
+        bool re = true;
+        int q = 1;
+        int b[k+1] = {0,};
+        b[0] = 0;
         
         for(int i=0;i<k;i++) {
-            int b[k+1] = {0,};
             
             if(a[i] > 0) {
                 b[q] = a[i];
@@ -45,30 +45,32 @@ int main() {
             }
             
             else if(a[i] == -1) {
-                if(a[i-1] != 1) {
-                    re = true;
+                if(b[q-1] != 1) {
+                    re = false;
                     break;
                 }
+                b[q-1] = 0;
                 b[q--];
-                re = false;
             }
             else if(a[i] == -2) {
-                if(a[i-1] != 2) {
-                    re = true;
+                if(b[q-1] != 2) {
+                    re = false;
                     break;
                 }
+                b[q-1] = 0;
                 b[q--];
-                re = false;
             }
         }
+        int sum = 0;
         
-        for(int i=0;i<k;i++) {
-            cout << a[i] << ' ';
+        for(int i=1;i<k+1;i++) {
+            sum += b[i];
+            //cout << b[i] << ' ';
         }
-        cout << endl;
+        //cout << endl;
         
-        // if(re == false) cout << "yes" << '\n';
-        // else cout << "no" << '\n';
+        if(re == false || sum != 0) cout << "no" << '\n';
+        else cout << "yes" << '\n';
         
     }
     
