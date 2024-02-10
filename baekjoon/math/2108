@@ -39,27 +39,32 @@ int main() {
     }
     
     int maxCnt = *max_element(cnt, cnt + 8001); // 최빈값이 몇번 나왔는지
-    vector<int> v;
-    int qq = 0;
-    
+    vector<int> v; // 두번째로 작은 최빈값을 출력하기 위한 벡터
+
     for(int i = 0; i <= 8000; i++) {
         if(cnt[i] == maxCnt) { // 최빈값과 동일한 빈도를 갖는 요소들의 수를 v에 추가
             v.push_back(i);
-            qq++;
         }
     }
-
-    sort(v.begin(), v.end());
     
-    int mode;
-    
-    if(v[0] > 4000) {
-        mode = -(v[0] - 4000);
-    } else {
-        mode = v[0];
+    for(auto i=v.begin();i!=v.end();i++) { // 음수로 다시 바꿔준다
+        if(*i > 4000) {
+            *i = -(*i - 4000);
+        }
     }
-
-    cout << mode << '\n';
+    
+    sort(v.begin(), v.end()); // 오름차순 정렬
+    
+    
+    // for(auto i=v.begin();i!=v.end();i++) {
+    //     cout << *i << endl;
+    // }
+    
+    if(v.size() == 1) { // 입력이 하나인 경우는 두번째 v가 0이기 때문에 입력값 출력
+        cout << v[0] << '\n';
+    }
+    else
+        cout << v[1] << '\n'; // 두번째로 작은 최빈값 출력
 
 
     // 범위 출력
