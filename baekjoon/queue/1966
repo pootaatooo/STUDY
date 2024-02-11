@@ -11,36 +11,18 @@ int main() {
     while(t--) {
         int n, m;
         cin >> n >> m;
-        
-        queue<pair<int,int>>q;
+        vector<pair<int,int>>v;
         priority_queue<int> pq;
         
         for(int i=0;i<n;i++) {
             int imp;
             cin >> imp;
-            q.push({imp,i});
+            v.push_back({imp,i}); // 중요도와 그 순서를 넣어줌
             pq.push(imp);
         }
         
-        for(int i=0;i<n;i++) {
-            cout << q[i].front().first << ' ' << pq[i].front() << endl;
-            q.pop(); pq.pop();
-        }
-        
-        
         
     }
+    
 
-
-다 포기하고 우선순위 큐로 진행한다
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
