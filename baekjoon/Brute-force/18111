@@ -1,18 +1,32 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 int main() {
-    ios:sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     
     int n, m, b;
     cin >> n >> m >> b;
     int map[501][501];
     
+    int minTime = 1e9;
+    
+    int minHeight = 1000; // 가장 높은 땅높이가 256이므로 적당히 높은 값과 비교
+    int maxHeight = 0; // 가장 낮은 땅높이가 0이므로 적당히 낮은 값과 비교
+    
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             cin >> map[i][j];
+            minHeight = min(minHeight, map[i][j]); // 맵의 가장 낮은 땅
+            maxHeight = max(maxHeight, map[i][j]); // 맵의 가장 높은 땅
         }
+    }
+    cout << minHeight << ' ' << maxHeight << endl;
+    
+    for(int i=0;i<=256;i++) {
+        int sum = 0;
+        
     }
     
     
