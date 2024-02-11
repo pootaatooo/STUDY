@@ -1,64 +1,19 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); // 시간제한 주의
+    ios:sync_with_stdio(0); cin.tie(0); cout.tie(0);
     
     int n, m, b;
     cin >> n >> m >> b;
+    int map[501][501];
     
-    int block[n*m] = {0,};
-    int cnt[257] = {0,};
-    
-    for(int i=0;i<n*m;i++) {
-        cin >> block[i];
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            cin >> map[i][j];
+        }
     }
-    
-    for(int i=0;i<n*m;i++) { //257까지가 아니라 입력크기만큼 반복해줘야 알맞은 범위에 접근댐
-        cnt[block[i]]++;
-    }
-    
-    // 땅파기
-    // vector<int>v; // 다른 땅들과 높이가 다른 땅
-    
-    int max = *max_element(cnt,cnt+257);
-    
-    cout << max << endl;
-    
-    
-    // for(int i=0;i<n*m;i++) {
-    //     if(block[i] != max) {
-    //         v.push_back(block[i]);
-    //     }
-    // }
-    // cout << endl;
-    // for(auto i=v.begin();i!=v.end();i++) {
-    //     cout << *i << ' ';
-    // }
-    
-    
-    // 땅쌓기
-    
-    
-}
-#include <iostream>
-
-using namespace std;
-
-int main() {
-    int n, m, b;
-    cin >> n >> m >> b;
-    int block[n*m] = {0,};
-    
-    for(int i=0;i<n*m;i++) {
-        cin >> block[i];
-    }
-    
-    int high = 0;
-    int time = -1;
     
     
     
