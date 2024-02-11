@@ -5,6 +5,7 @@
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     int t;
     cin >> t;
     
@@ -12,7 +13,7 @@ int main() {
         int n, m;
         cin >> n >> m;
         vector<pair<int,int>>v;
-        priority_queue<int> pq;
+        priority_queue<int> pq; // 우선순위 큐는 자동으로 내림차순
         
         for(int i=0;i<n;i++) {
             int imp;
@@ -20,6 +21,15 @@ int main() {
             v.push_back({imp,i}); // 중요도와 그 순서를 넣어줌
             pq.push(imp);
         }
+        
+        int cnt = 0; // 앞에 얼마나 출력 되었는가
+        
+        while(!v.empty()) {
+            
+        }
+        
+        
+        
         
         
     }
