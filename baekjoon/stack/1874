@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stack>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int>v; // 이 배열을 만들어야함
+    stack<int> st; // LIFO 구조로 받아짐
+    
+    for(int i=0;i<n;i++) {
+        int a;
+        cin >> a;
+        v.push_back(a);
+        st.push(a);
+    }
+    
+    for(auto i=v.begin();i!=v.end();i++) {
+        cout << *i << ' ';
+    }
+    cout << endl;
+    while(!st.empty()) {
+        cout << st.top() << ' ';
+        st.pop();
+    }
+    
+    
+    
+    
+}
