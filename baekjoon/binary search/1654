@@ -1,1 +1,21 @@
-ㅇㄴㅁ
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    
+    int k, n;
+    cin >> k >> n;
+    int ran[k];
+    
+    for(int i=0;i<k;i++) { // 초기화
+        cin >> ran[i];
+    }
+    
+    for(int i=0;i<k;i++) { // 초기화
+        cout << ran[i] << endl;
+    }
+    
+    
+}
