@@ -6,19 +6,31 @@ int main() {
     int t;
     cin >> t;
     
-    for(int i=0;i<t;i++) {
-        int a, b;
-        cin >> a >> b;
+    while(t--) {
+        int x;
+        int y;
+        cin >> x >> y;
+        int dis = y-x;
+        int z = 1;
+        long long sum = 0;
         
-        if(a == 0) {
-            cout << b-a << '\n';
+        while(dis > sum+z*2) { // 양쪽에서z만큼 가까워진거리보다 크면
+            sum += z*2; // 양쪽에서 움직인 거리를 더해줌
+            z++; // 다음 움직일 수 있는 최대거리를 만들어줌
+        }
+        
+        if(sum+z>= dis) {
+            cout << 2*z-1 << '\n';
         }
         else
-            cout << b-a-1 << '\n';
+            cout << 2*z << '\n';
+        
         
     }
     
     
+    
 }
-// 16퍼에서 틀림 
-// 반례 https://www.acmicpc.net/board/view/128555
+
+# 풀이코드 
+https://lee1201zxc.tistory.com/entry/%EB%B0%B1%EC%A4%80-1011-Fly-me-to-the-Alpha-CentauriC%EC%96%B8%EC%96%B4
