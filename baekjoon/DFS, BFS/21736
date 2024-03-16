@@ -2,7 +2,12 @@
 
 using namespace std;
 
+int dx[4] = {-1,0,1,0};
+int dy[4] = {0,-1,0,1};
+
 int main() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    
     int n, m;
     cin >> n >> m;
     char x[n][m];
@@ -13,23 +18,34 @@ int main() {
         }
     }
     
-    // for(int i=0;i<n;i++) {
-    //     for(int j=0;j<m;j++) {
-    //         cout << x[i][j]; 
-    //     }
-    //     cout << '\n';
-    // }
     int start_n = 0, start_m = 0;
+    int cnt = 0;
     
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             if(x[i][j] == 'I') {
                 start_n = i;
                 start_m = j;
-            } 
+            }
         }
     }
     
-    cout << start_n << ' ' << start_m;
+    cout << start_n << ' ' << start_m << ' ' << cnt;
+
+    while(1) { // 생각해내야함
+        for(int i=0;i<4;i++) { // 1.상하좌우 컨트롤
+           int nx = start_n + dx[i];
+           int ny = start_m + dy[i];
+           
+           if(nx<0 || nx>=n || ny<0 || ny>=m) continue;
+           if(x[nx][ny] == 'X') continue; // 벽만났을때 다시 원래자리로 돌아감 
+        }
+        break;
+    }
+    
+    
+    
+    
+    
     
 }
