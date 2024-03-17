@@ -29,7 +29,7 @@ int main(void) {
     else
       tail->next = newNode;
 
-    tail = newNode; // 새노드를 추가하는 부분!
+    tail = newNode; 
   }
   printf("\n");
 
