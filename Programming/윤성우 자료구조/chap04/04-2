@@ -1,1 +1,91 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+typedef struct _node {
+  int data;
+  struct _node *next;
+} Node;
+
+int main(void) {
+  Node *head = NULL;
+  Node *tail = NULL;
+  Node *cur = NULL;
+
+  Node *newNode = NULL;
+  int readData;
+
+  head = (Node *)malloc(sizeof(Node)); // 더미노드를 head에 할당
+  tail = head; // tail과 head 모두 더미노드를 가리킴
+  
+  while(1) {
+    printf("자연수 입력: ");
+    scanf("%d", &readData);
+    if(readData < 1)
+      break;
+
+    newNode = (Node *)malloc(sizeof(Node));
+    newNode->data = readData;
+    newNode->next = NULL;
+
+    // if(head == NULL)
+    //   head = newNode;
+    // else
+    //   tail->next = newNode;
+    tail->next = newNode;
+    tail = newNode; 
+  }
+  printf("\n");
+
+  printf("입력 받은 데이터의 전체출력! \n");
+  if(head == tail) {
+    printf("저장된 자연수가 존재하지 않습니다.\n");
+  }
+  else {
+    cur = head;
+    //printf("%d ",cur->data); 더미노드를 가리키고 있는 상태여서 출력할 필요 x
+    while(cur->next != NULL) {
+      cur = cur->next; // 첫번째 노드 이후를 가리킴
+      printf("%d ", cur->data);
+    }
+  }
+  printf( "\n\n");
+
+  // if(head == tail) { 이것도 메모리 누수 방지
+  //   return 0;
+  // }
+  // else {
+  //   Node *delNode = head;
+  //   Node *delNextNode = head->next;
+
+  //   // printf("%d를 삭제합니다. \n", head->data); 위와마찬가지로 더미노드
+  //   // free(delNode);
+
+  //   while(delNextNode != NULL) {
+  //     delNode = delNextNode;
+  //     delNextNode = delNextNode->next;
+
+  //     printf("%d를 삭제합니다. \n", delNode->data);
+  //     free(delNode);
+  //   }
+  // } 아래와 같이 변경가능
+
+  cur = head->next;
+  Node *nextNode; 
+  
+  while(cur != NULL) {
+    nextNode = cur->next;
+    printf("%d를 삭제합니다. \n", cur->data);
+    free(cur);
+    cur = nextNode;
+  }
+
+  free(head);
+
+  return 0;
+
+}
+
+# 더미노드는 리스트가 비어있을 때도 항상 존재하기 때문에 추가적인 예외 처리를 할 필요가 없음.
+# 더미노드는 free()를 사용해서 해제해줄 필요가 있으나, 프로그램이 실행되는 동안 리스트가 유지되어야 하는 경우에는 
+  해제하지 않는 것이 더 적절하다.
+  free(head) 같은 방식으로 해제해도 적절하다
