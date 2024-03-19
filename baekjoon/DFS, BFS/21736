@@ -13,38 +13,37 @@ int main() {
     int n, m;
     cin >> n >> m;
     char x[n][m];
+    queue<pair<int,int>> q; // 좌표를 저장하는 큐 (int형)
     
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             cin >> x[i][j]; // map생성
-        }
-    }
-    
-    queue<pair<char,char>> q;
-    
-    for(int i=0;i<n;i++) {
-        for(int j=0;j<m;j++) {
             if(x[i][j] == 'I') { // 도연이 자리
                 visited[i][j] = true;
                 q.push({i, j}); // 좌표 삽입
             }
         }
     }
-    
+
     int cnt = 0; // 사람을 만난 횟수
     
     while(!q.empty()) {
+        //cout << q.front().first << ' ' << q.front().second << '\n';
+        int cx = q.front().first;
+        int cy = q.front().second;
+        q.pop();
+        
         for(int i=0;i<4;i++) { // 1.상하좌우 컨트롤
-           int nx = q.front().first + dx[i];
-           int ny = q.front().second + dy[i];
+           int nx = cx + dx[i];
+           int ny = cy + dy[i];
            
            if(nx >=0 && ny >= 0 && nx < n && ny < m && !visited[nx][ny]) {
-               q.pop();
+               
                if(x[nx][ny] == 'P') cnt++; // 사람 만났을 때 카운트
-               if(x[nx][ny] == 'X') continue; // 벽만났을때 다시 원래자리로 돌아감 
+               else if(x[nx][ny] == 'X') continue; // 벽만났을때 다시 원래자리로 돌아감 
                
                visited[nx][ny] = true; // 벽을 안 만나고 통과하면 방문
-               q.push({nx, ny}); // 그자리를 도연이가 있는 자리로 할당
+               q.push({nx, ny}); // 그자리를 도연이가 있는 자리로 할당(가능한 상하좌우를 큐에 넣음)
            }
            
         }
@@ -55,7 +54,6 @@ int main() {
     else cout << "TT";
 
 }
-
 =================================================================
 
 #include <iostream>
