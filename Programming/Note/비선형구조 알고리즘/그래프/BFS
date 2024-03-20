@@ -1,0 +1,55 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+vector<vector<int>> graph; // 2차원 배열
+vector<bool> visited;
+
+void bfs(int start) {
+    queue<int> q;
+    q.push(start);
+    visited[start] = true;
+
+    while (!q.empty()) {
+        int cur = q.front();
+        q.pop();
+        cout << cur << " "; // 방문한 노드 출력
+
+        for (int i = 0; i < graph[cur].size(); ++i) { //
+            int next = graph[cur][i]; 
+            if (!visited[next]) {
+                visited[next] = true;
+                q.push(next);
+            }
+        }
+    }
+}
+
+int main() {
+    int n, m; // 노드 수, 간선 수
+    cin >> n >> m;
+
+    graph.resize(n + 1);
+    visited.resize(n + 1, false);
+
+    // 간선 정보 입력
+    for (int i = 0; i < m; ++i) {
+        int a, b; // a에서 b로의 간선
+        cin >> a >> b;
+        graph[a].push_back(b);
+        graph[b].push_back(a); // 양방향 그래프일 경우 추가
+    }
+
+    int start_node;
+    cin >> start_node; // 탐색을 시작할 노드 입력
+
+    bfs(start_node);
+
+    return 0;
+}
+
+# vector를 이용한 그래프는 배열입력과 다르게 애초에 연결된 부분만 입력을 받기 때문에 위 next부분에서
+  탐색을 시작할 노드에서부터 연결된 곳 먼저 q에 할당되고 그 할당된 곳에서 연결된 부분들이 추가적으로 q에 할당된다.
+  즉, 출력은 번호순대로 나옴
