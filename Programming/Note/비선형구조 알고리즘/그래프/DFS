@@ -1,1 +1,42 @@
+#include <iostream>
+#include <vector>
 
+using namespace std;
+
+vector<vector<int>> graph;
+vector<bool> visited;
+
+void dfs(int node) {
+    visited[node] = true;
+    cout << node << " "; // 방문한 노드 출력
+
+    for (int i = 0; i < graph[node].size(); ++i) { // 노드의 개수만큼 반복
+        int next = graph[node][i]; 
+        if (!visited[next]) {
+            dfs(next);
+        }
+    }
+}
+
+int main() {
+    int n, m; // 노드 수, 간선 수
+    cin >> n >> m;
+
+    graph.resize(n + 1); // resize함수를 통해 그래프의 범위 지정
+    visited.resize(n + 1, false); // 마찬가지로 방문여부를 확인하는 범위
+
+    // 간선 정보 입력
+    for (int i = 0; i < m; ++i) {
+        int a, b; // a에서 b로의 간선
+        cin >> a >> b;
+        graph[a].push_back(b);
+        graph[b].push_back(a); // 양방향 그래프일 경우 추가
+    }
+
+    int start_node;
+    cin >> start_node; // 탐색을 시작할 노드 입력
+
+    dfs(start_node);
+
+    return 0;
+}
