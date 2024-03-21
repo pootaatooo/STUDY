@@ -1,0 +1,57 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int m, n;
+int dx[4] = {0,-1,0,1};
+int dy[4] = {1,0,-1,0};
+int cnt = 0;
+
+void bfs(int x, int y, int toma[][m], bool check[][m]) {
+    queue<pair<int,int>> q;
+    pair<int,int> cur = q.front();
+    q.pop();
+    
+    while(!q.empty()) {
+        for(int i=0;i<4;i++) {
+            int cx = cur.first + dx[i];
+            int cy = cur.first + dy[i];
+        }
+    }
+    
+}
+
+
+
+int main() {
+    
+    cin >> m >> n;
+    
+    int toma[n][m];
+    bool check[n][m];
+    
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            cin >> toma[i][j];
+        }
+    }
+    
+    /*for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            cout << toma[i][j] << ' ';
+        }
+        cout << endl;
+    }*/
+    
+    
+    
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            if(toma[i][j] == 1 && !check[i][j]) {
+                bfs(i, j, toma, check);
+            }
+        }
+    }
+    
+}
