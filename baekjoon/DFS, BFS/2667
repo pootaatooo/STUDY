@@ -13,7 +13,7 @@ vector<int> v;
 
 
 
-void dfs(int x, int y, int n) {
+void bfs(int x, int y, int n) {
     queue<pair<char,char>> q;
     q.push(make_pair(x,y));
     z[x][y] = 1;
@@ -59,7 +59,7 @@ int main() {
     for(int i=0;i<n;i++) {
         for(int j=0;j<n;j++) {
             if(a[i][j] == '1'&& z[i][j] == 0) {
-                dfs(i,j,n);
+                bfs(i,j,n);
                 cnt++;
             }
         }
