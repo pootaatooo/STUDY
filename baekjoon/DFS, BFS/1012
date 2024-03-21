@@ -1,1 +1,71 @@
 
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int dx[4] = {-1,0,1,0};
+int dy[4] = {0,-1,0,1};
+int map[51][51] = {0,};
+bool visited[51][51];
+
+
+// void bfs(int x) {
+//     queue<int> q;
+//     q.push(x);
+//     visited[x] = true;
+    
+//     while(!q.empty()) {
+//         int cur = q.front();
+//         q.pop();
+        
+//         for(int i=0;i<graph[cur].size();i++) {
+//             int next = graph[cur][i];
+//             if(!visited[next]) {
+//                 visited[next] = true;
+//                 q.push(next);
+//             }
+//         }
+        
+//     }
+    
+// }
+
+void reset() {
+    for(int i=0;i<51;i++) {
+        for(int j=0;j<51;j++) {
+            map[i][j] = 0;
+        }
+    }
+}
+
+
+
+int main() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    
+    int t;
+    cin >> t;
+    
+    while(t--) {
+        int m, n, k;
+        cin >> m >> n >> k;
+        
+        for(int i=0;i<k;i++) {
+            int a, b;
+            cin >> a >> b;
+            map[a][b] = 1;
+        }
+        
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<m;j++) {
+                cout << map[i][j] << ' ';
+            }
+            cout << endl;
+        }
+        
+        reset();
+        cout << "======" << endl;
+        
+    }
+}
