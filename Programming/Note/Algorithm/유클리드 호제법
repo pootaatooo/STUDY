@@ -3,3 +3,37 @@
 유클리드 호제법은 2개의 자연수 a, b에 대해서 a를 b로 나눈 나머지를 r이라 하면(단 a>b), a와 b의 최대공약수는 b와 r의 최대공약수와 같다.
 이 성질을 이용해서 b를 r로 나눈 나머지 z를 구하고 다시 r을 z로 나눈 나머지를 구하는 과정을 반복하여 나머지가 0이 되었을 때 "나누는 수"
 가 a와 b의 최대공약수이다.
+
+#include <iostream>
+
+using namespace std;
+
+int gcd(int a, int b) {
+    
+    if(a < b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    
+    if(a % b == 0) {
+        return b;
+    }
+    else {
+        return gcd(b, a%b);
+    }
+
+}
+
+int main() {
+    int t;
+    cin >> t;
+    
+    while(t--) {
+        int a, b;
+        cin >> a >> b;
+        cout << a * b / gcd(a, b) << '\n'; // 두 수를 곱하고 최대공약수로 나누면 최소공배수(lcm)을 구할 수 있다!
+    }
+    
+} 
+# https://www.acmicpc.net/problem/1934
