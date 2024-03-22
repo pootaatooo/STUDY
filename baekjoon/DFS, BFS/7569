@@ -5,15 +5,17 @@
 using namespace std;
 
 int m, n, h;
+
+int dz[6] = {0,0,0,0,1,-1}; // 앞, 뒤, 좌, 우, 상, 하
 int dx[6] = {-1,1,0,0,0,0};
 int dy[6] = {0,0,-1,1,0,0};
-int dz[6] = {0,0,0,0,1,-1};
+
 
 int toma[101][101][101];
 bool check[101][101][101] = {false,};
 
 int bfs() {
-    queue<tuple<int,int,int>> q;
+    queue<tuple<int,int,int>> q; // 면, 행, 열 순서대로
     
     for(int l=0;l<h;l++) {
         for(int i=0;i<n;i++) {
@@ -35,16 +37,18 @@ int bfs() {
             tuple<int,int,int> cur = q.front();
             q.pop();
             
-            for(int i=0;i<4;i++) {
-                int nx = get<0>(cur) + dx[i];
-                int ny = get<1>(cur) + dy[i];
-                int nz = get<2>(cur) + dz[i];
+            for(int i=0;i<6;i++) { // 위, 아래, 앞, 뒤, 좌, 우 = 6번
+                
+                int nz = get<0>(cur) + dz[i];
+                int nx = get<1>(cur) + dx[i];
+                int ny = get<2>(cur) + dy[i];
+                
                 
                 if(nx>=0 && ny>=0 && nz >= 0 && nz<h && nx<n && ny<m && !check[nz][nx][ny] && toma[nz][nx][ny] == 0) {
                     q.push({nz,nx,ny});
                     toma[nz][nx][ny] = 1;
                     check[nz][nx][ny] = true;
-                    
+                    // cout << nz << ' ' << nx << ' ' << ny << endl;
                 }
             }
         }
@@ -81,4 +85,3 @@ int main() {
     cout << result;
     
 }
-
